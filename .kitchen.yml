@@ -19,5 +19,4 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[nginx::source]
-      # - recipe[frab]
+      - recipe[frab]

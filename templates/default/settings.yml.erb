@@ -1,0 +1,23 @@
+development:
+  # Host configuration used to generate links in emails
+  host: <%= node['frab']['settings']['host'] %>
+  port: <%= node['frab']['settings']['port'] %>
+  protocol: <%= node['frab']['settings']['protocol'] %>
+  # Default 'From' address, used when sending emails
+  from_email: <%= node['frab']['settings']['from_email'] %>
+
+test:
+  host: <%= node['frab']['settings']['test']['host'] %>
+  protocol: <%= node['frab']['settings']['test']['protocol'] %>
+  from_email: <%= node['frab']['settings']['test']['from_email'] %>
+
+production:
+  # no need to specify port, when default (80) is used
+  host: <%= node['frab']['settings']['production']['host'] %>
+  protocol: <%= node['frab']['settings']['production']['protocol'] %>
+  from_email: <%= node['frab']['settings']['production']['from_email'] %>
+  # smtp server settings. see
+  # http://api.rubyonrails.org/classes/ActionMailer/Base.html
+  # for all available options
+  smtp_settings:
+    address: <%= node['frab']['settings']['production']['smtp']['address'] %>
