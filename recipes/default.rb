@@ -26,13 +26,6 @@ when "debian", "ubuntu"
   package "ruby"
   package "bundler"
 
-
-  gem_package "bcrypt-ruby" do
-    gem_binary '/usr/bin/gem'
-    options '-v 3.0.1'
-    action :install
-  end
-
   # Checkout frab from GitHub
   git node['frab']['install']['dir'] do
     repository "https://github.com/frab/frab.git"
