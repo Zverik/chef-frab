@@ -79,7 +79,7 @@ when "debian", "ubuntu"
   end
 
   execute "rails-server" do
-    command "rails server -d"
+    command "rails server -e #{node['frab']['environment']} -d"
     cwd node['frab']['install']['dir']
     action :run
   end

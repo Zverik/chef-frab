@@ -1,10 +1,10 @@
 development:
   # Host configuration used to generate links in emails
-  host: <%= node['frab']['settings']['host'] %>
-  port: <%= node['frab']['settings']['port'] %>
-  protocol: <%= node['frab']['settings']['protocol'] %>
+  host: <%= node['frab']['settings']['development']['host'] %>
+  port: <%= node['frab']['settings']['development']['port'] %>
+  protocol: <%= node['frab']['settings']['development']['protocol'] %>
   # Default 'From' address, used when sending emails
-  from_email: <%= node['frab']['settings']['from_email'] %>
+  from_email: <%= node['frab']['settings']['development']['from_email'] %>
 
 test:
   host: <%= node['frab']['settings']['test']['host'] %>

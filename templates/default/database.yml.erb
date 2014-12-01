@@ -1,25 +1,28 @@
 # SQLite version 3.x
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
+ adapter: <%= node['frab']['database']['development']['adapter'] %>
+ database: <%= node['frab']['database']['development']['sqlitedb_path'] %>
+ pool: <%= node['frab']['database']['development']['pool'] %>
+ timeout: <%= node['frab']['database']['development']['timeout'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: <%= node['frab']['database']['test']['adapter'] %>
+  database: <%= node['frab']['database']['test']['sqlitedb_path'] %>
+  pool: <%= node['frab']['database']['test']['pool'] %>
+  timeout: <%= node['frab']['database']['test']['timeout'] %>
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: <%= node['frab']['database']['production']['adapter'] %>
+  encoding: <%= node['frab']['database']['production']['encoding'] %>
+  database: <%= node['frab']['database']['production']['database'] %>
+  username: <%= node['frab']['database']['production']['username'] %>
+  password: <%= node['frab']['database']['production']['password'] %>
+  host: <%= node['frab']['database']['production']['host'] %>
+  port: <%= node['frab']['database']['production']['port'] %>
 
 cucumber:
   <<: *test
