@@ -3,8 +3,6 @@
 # Recipe:: default
 #
 
-ENV['RAILS_ENV'] = "node['frab']['environment']"
-
 case node[:platform]
 when "debian", "ubuntu"
 

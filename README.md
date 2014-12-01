@@ -194,4 +194,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: [Ronny Trommer](ronny@opennms.org)
+Authors: Ronny Trommer <ronny@opennms.org>
