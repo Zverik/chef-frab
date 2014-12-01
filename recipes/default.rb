@@ -3,6 +3,11 @@
 # Recipe:: default
 #
 
+env "RAILS_ENV" do
+  attribute node['frab']['environment']
+  action :create
+end
+
 case node[:platform]
 when "debian", "ubuntu"
 
@@ -79,7 +84,7 @@ when "debian", "ubuntu"
   end
 
   execute "rails-server" do
-    command "rails server -e #{node['frab']['environment']} -d"
+    command "rails server -d"
     cwd node['frab']['install']['dir']
     action :run
   end
