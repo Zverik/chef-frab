@@ -17,9 +17,12 @@ test: &test
 
 production:
   adapter: <%= node['frab']['database']['production']['adapter'] %>
-  database: <%= node['frab']['database']['production']['sqlitedb_path'] %>
-  pool: <%= node['frab']['database']['production']['pool'] %>
-  timeout: <%= node['frab']['database']['production']['timeout'] %>
+  encoding: <%= node['frab']['database']['production']['encoding'] %>
+  database: <%= node['frab']['database']['production']['database'] %>
+  username: <%= node['frab']['database']['production']['username'] %>
+  password: <%= node['frab']['database']['production']['password'] %>
+  host: <%= node['frab']['database']['production']['host'] %>
+  port: <%= node['frab']['database']['production']['port'] %>
 
 cucumber:
   <<: *test
