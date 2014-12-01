@@ -1,4 +1,4 @@
-default['frab']['environment'] = 'production'
+default['frab']['environment'] = 'test'
 default['frab']['install']['dir'] = '/srv/frab'
 default['frab']['install']['release'] = 'master'
 
