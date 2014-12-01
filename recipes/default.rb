@@ -56,20 +56,20 @@ when "debian", "ubuntu"
 
   # Create and setup the database
   execute "db-setup" do
-    command "rake db:setup"
+    command "rake db:setup RAILS_ENV=#{node['frab']['environment']}"
     cwd node['frab']['install']['dir']
     action :run
   end
 
   # Precompile assets
   execute "rake-precompile" do
-    command "rake assets:precompile"
+    command "rake assets:precompile RAILS_ENV=#{node['frab']['environment']}"
     cwd node['frab']['install']['dir']
     action :run
   end
 
   execute "rake-secret" do
-    command "rake secret"
+    command "rake secret RAILS_ENV=#{node['frab']['environment']}"
     cwd node['frab']['install']['dir']
     action :run
   end
@@ -81,7 +81,7 @@ when "debian", "ubuntu"
   end
 
   execute "rails-server" do
-    command "rails server -d"
+    command "rails server -e #{node['frab']['environment']} -d"
     cwd node['frab']['install']['dir']
     action :run
   end

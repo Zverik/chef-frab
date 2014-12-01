@@ -1,7 +1,0 @@
-DEPENDENCIES
-  frab
-    path: .
-    metadata: true
-
-GRAPH
-  frab (0.1.3)
