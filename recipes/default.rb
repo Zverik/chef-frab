@@ -56,6 +56,7 @@ when "debian", "ubuntu"
   execute "db-setup" do
     command "rake db:setup RAILS_ENV=#{node['frab']['environment']}"
     cwd node['frab']['install']['dir']
+    not_if  "mysql -h localhost -u #{node['frab']['database']['production']['username']} -p#{node['frab']['database']['production']['password']} -D #{node['frab']['database']['production']['database']} -e 'show databases;' | grep #{node['frab']['database']['production']['database']}"
     action :run
   end
 
@@ -69,12 +70,14 @@ when "debian", "ubuntu"
   execute "rake-secret" do
     command "rake secret RAILS_ENV=#{node['frab']['environment']}"
     cwd node['frab']['install']['dir']
+    not_if { ::File.exists?("config/initializers/secret_token.rb")}
     action :run
   end
 
   execute "rake-secret-install" do
     command "cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb"
     cwd node['frab']['install']['dir']
+    not_if { ::File.exists?("config/initializers/secret_token.rb")}
     action :run
   end
 
