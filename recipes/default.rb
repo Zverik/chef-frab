@@ -81,6 +81,7 @@ when "debian", "ubuntu"
   execute "rails-server" do
     command "rails server -e #{node['frab']['environment']} -d"
     cwd node['frab']['install']['dir']
+    not_if { ::File.exists?("#{node['frab']['install']['dir']}/tmp/pids/server.pid")}
     action :run
   end
 end
