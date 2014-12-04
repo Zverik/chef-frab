@@ -1,4 +1,5 @@
 default['frab']['environment'] = 'development'
+default['frab']['git']['repository'] = 'https://github.com/frab/frab.git'
 default['frab']['install']['dir'] = '/srv/frab'
 default['frab']['install']['release'] = 'master'
 

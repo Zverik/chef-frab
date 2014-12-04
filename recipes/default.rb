@@ -28,7 +28,7 @@ when "debian", "ubuntu"
 
   # Checkout frab from GitHub
   git node['frab']['install']['dir'] do
-    repository "https://github.com/frab/frab.git"
+    repository node['frab']['git']['repository']
     reference node['frab']['install']['release']
     action :sync
   end
