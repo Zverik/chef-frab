@@ -8,7 +8,7 @@ when "debian", "ubuntu"
 
   # Refresh aptitude repository
   execute "aptitude-update" do
-    command "aptitude update"
+    command "apt-get update"
     action :run
   end
 
@@ -21,7 +21,7 @@ when "debian", "ubuntu"
   package "libxslt-dev"
   package "nodejs"
   package "git"
-  package "ruby1.9.1-dev"
+  package "ruby-dev"
   package "build-essential"
   package "ruby"
   package "bundler"
@@ -52,6 +52,13 @@ when "debian", "ubuntu"
     end
   end
 
+  # Fix method that works only on Ruby 2.4+
+  execute "fix-ruby-23" do
+    command "sed -i -e 's/match?/match/' helpers/public/schedule_helper.rb"
+    cwd node['frab']['install']['dir']
+    action :run
+  end
+
   # Create and setup the database
   execute "db-setup" do
     command "rake db:setup RAILS_ENV=#{node['frab']['environment']}"
@@ -74,15 +81,8 @@ when "debian", "ubuntu"
     action :run
   end
 
-  execute "rake-secret-install" do
-    command "cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb"
-    cwd node['frab']['install']['dir']
-    not_if { ::File.exists?("config/initializers/secret_token.rb")}
-    action :run
-  end
-
   execute "rails-server" do
-    command "rails server -e #{node['frab']['environment']} -d"
+    command "rails server -b 0.0.0.0 -e #{node['frab']['environment']} -d"
     cwd node['frab']['install']['dir']
     not_if { ::File.exists?("#{node['frab']['install']['dir']}/tmp/pids/server.pid")}
     action :run

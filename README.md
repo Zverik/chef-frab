@@ -2,11 +2,9 @@ frab Cookbook
 =============
 This cookbook installs and configures the free and open conference management system [frab](http://frab.github.io/frab/ "Free and open conference management system frab").
 
-[![Build Status](https://travis-ci.org/indigo423/chef-frab.svg)](https://travis-ci.org/indigo423/chef-frab)
-
 Requirements
 ------------
-- Ubuntu 14.04 LTS
+- Ubuntu 16.04 LTS
 
 Attributes
 ----------
